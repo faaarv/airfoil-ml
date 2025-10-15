@@ -60,7 +60,7 @@ def main():
     }
 
     joblib.dump({"split_airfoils": split_airfoils, "meta": meta}, 'SPLITS_META_Data.pkl', compress=3)
-    print("Saved:  'SPLITS_META_Data.pkl'")
+    print("Saved:  'SPLITS_Data.pkl'")
 
     # ===== SCALERS =====
     scalers = {}
