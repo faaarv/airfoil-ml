@@ -25,10 +25,7 @@ Unprocessed dataset can be found at https://nasa-public-data.s3.amazonaws.com/pl
 
 
 - Reducing time comparing to Xfoil with preserved accuracy on unseen geometries, confirming model generalizability 
-![Cl-alpha for unseen airfoil](media/cl.png)
-![Cd-alpha for unseen airfoil](media/cd.png)
-![Cdp-alpha for unseen airfoil](media/cdp.png)
-![Cm-alpha for unseen airfoil](media/cm.png)
+![polars for unseen airfoil](media/unseenairfoil.png)
 
 ## Ongoing Work
 - Currently refactoring prediction head for pressure-only output to enable fine-tuning/transfer learning with high resolution Dataset from [link].For this purpose : new repo [airfoil-ml-ft](https://github.com/faaarv/airfoil-ml-ft)
