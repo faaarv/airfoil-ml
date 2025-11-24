@@ -6,12 +6,13 @@ A machine learning surrogate model trained on XFOIL-generated aerodynamic data t
 - Reduced raw dataset from 1.5 GB to 500 MB by filtering and cleaning JSON files considering relevance and efficiency
 - Performed analysis on data using min-max, deviation, skewness, correlation, ... 
 - Choosing the scaling method based on this informayion
-- Applied group shuffling to guard against data leakage and improve generalization
-- perform scaling, splitting and saving the scalers and index of splits 
-
+- perform scaling, splitting and saving the scalers and index of splits
+- 
 The original dataset was restructured for this task, the dataset prepration can be found in data_preprocessing.
 
 Unprocessed dataset can be found at https://nasa-public-data.s3.amazonaws.com/plot3d_utilities/airfoil-learning-dataset.zip This dataset is not normalized and contains the geometry of each airfoil and the xfoil results(originally referenced in the [airfoil-learning](https://github.com/nasa/airfoil-learning)).
+
+A critical insight during the process was the need to prevent "geometry leakage." Since the dataset contains multiple configuration for the same airfoil, a simple random train-test split could leak information. So **`GroupShuffleSplit`** from scikit-learn is used. This technique groups all data points belonging to a single airfoil geometry and ensures that the entire group is placed in a split (train or test or validation set). This provides a much more honest evaluation of the model's ability to predict the performance of **truly unseen airfoil geometries**.
 
 
 ## Model Development and Validation:
